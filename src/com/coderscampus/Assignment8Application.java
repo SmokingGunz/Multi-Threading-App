@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Assignment8Application {
@@ -42,11 +41,17 @@ public class Assignment8Application {
 				e.printStackTrace();
 			}
 		}
-		
-		Map<Integer, Integer> myMap = list.stream()
-										  .collect(Collectors.toMap(Function.identity(), duplicateValue -> 1, Integer::sum));
-		
-        System.out.println(myMap);
+        
+        // Count the occurrences of each number using Java streams
+        Map<Integer, Long> map1 = list.stream()
+        		                      .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
+        
+        // Display the count for each number in the desired format
+        String result = map1.entrySet().stream()
+        		              		   .map(e -> e.getKey() + "=" + e.getValue())
+        		              		   .collect(Collectors.joining(","));
+        
+        System.out.println(result);
 
 	}
 
