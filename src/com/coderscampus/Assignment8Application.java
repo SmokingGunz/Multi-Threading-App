@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class Assignment8Application {
 
 	public static void main(String[] args) {
+		
 
 		Assignment8 app = new Assignment8();
 
